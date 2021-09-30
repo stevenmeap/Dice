@@ -1,12 +1,14 @@
 public ArrayList<Die> dice;
+public int totalCount = 0;
 
 void setup() {
-  size(600, 600);
+  size(600, 700);
   noLoop();
   dice = new ArrayList();
 }
 int amount;
 void draw() {
+  totalCount = 0;
   background(233);
   amount = rollAmount();
   int size = Math.max(amount, width) / Math.min(amount, width);
@@ -14,8 +16,12 @@ void draw() {
   for (int i = 0; i < amount*increase; i+= increase) {
     for (int k = 0; k < amount*increase; k+= increase) {
       Die die = new Die(i, k, size);
+      totalCount += die.getValue();
     }
   }
+  pushMatrix();
+  text("Amount: " + amount*amount + " Total : " + totalCount, 250,650);
+  popMatrix();
 }
 void mousePressed() {
   redraw();
@@ -44,6 +50,10 @@ public class Die {
 
   public void roll() {
     sides = (int) (Math.random()*6) + 1;
+  }
+  
+  public int getValue(){
+    return sides;
   }
   public void show() {
     pushMatrix();
