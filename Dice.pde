@@ -20,7 +20,7 @@ void draw() {
     }
   }
   pushMatrix();
-  text("Amount: " + amount*amount + " Total : " + totalCount, 250,650);
+  text("Dice: " + amount*amount + " Total dots: " + totalCount, 250,650);
   popMatrix();
 }
 void mousePressed() {
