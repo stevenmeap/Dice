@@ -23,7 +23,7 @@ void mousePressed() {
 }
 
 private int rollAmount() {
-  int amount = ((int) (Math.random() *60+ 1));
+  int amount = ((int) (Math.random() *100+ 1));
 
 
   return 600%amount== 0 ? amount : rollAmount();
@@ -32,19 +32,19 @@ private int rollAmount() {
 
 public class Die {
   private int x, y;
-  private int sides = 2;
+  private int sides = 6;
   private int size;
   public Die(int x, int y, int size) {
     this.x = x;
     this.y = y;
     this.size = size;
-    //roll();
+    roll();
     show();
   }
 
 
   public void roll() {
-    sides = (int) (Math.random()*6+1);
+    sides = (int) (Math.random()*6) + 1;
   }
   public void show() {
     pushMatrix();
@@ -53,13 +53,41 @@ public class Die {
     fill(0);
     switch(sides) {
     case 1:
-      ellipse(x+size / 2, y+size/2, size/4, size/4);
+      ellipse(x+size / 2, y+size/2, size/4, size/4); //center
       break;
     case 2:
-      ellipse (x+size/4, y+ size /4, size/4,size/4);
-      ellipse (x+size, (y + size/4)  , size/4,size/4);
+      ellipse(x+size/4, y+ size /4, size/4, size/4); //top left
+      ellipse(x+3*(size/4), y + 3*(size/4), size/4, size/4); //bottom right
+      break;
+    case 3:
+      ellipse(x+size / 2, y+size/2, size/4, size/4); //center
+      ellipse(x+size/4, y+ size /4, size/4, size/4); //top left
+      ellipse(x+3*(size/4), y + 3*(size/4), size/4, size/4); //bottom right
+      break;
+    case 4:
+      ellipse(x+size/4, y+ size /4, size/4, size/4); //top left
+      ellipse(x+3*(size/4), y + 3*(size/4), size/4, size/4); //bottom right
+      ellipse(x+3*(size/4), y+ size /4, size/4, size/4); //top right
+      ellipse(x+(size/4), y + 3*(size/4), size/4, size/4); //bottom left
+      break;
+    case 5:
+      ellipse(x+size/4, y+ size /4, size/4, size/4); //top left
+      ellipse(x+3*(size/4), y + 3*(size/4), size/4, size/4); //bottom right
+      ellipse(x+3*(size/4), y+ size /4, size/4, size/4); //top right
+      ellipse(x+(size/4), y + 3*(size/4), size/4, size/4); //bottom left
+      ellipse(x+size / 2, y+size/2, size/4, size/4); //center
+      break;
+    case 6:
+      ellipse(x+size/4, y+ size /4, size/4, size/4); //top left
+      ellipse(x+3*(size/4), y + 3*(size/4), size/4, size/4); //bottom right
+      ellipse(x+3*(size/4), y+ size /4, size/4, size/4); //top right
+      ellipse(x+(size/4), y + 3*(size/4), size/4, size/4); //bottom left
+      ellipse(x+3*(size/4), y+size/2, size/4, size/4); //center right
+      ellipse(x+(size/4), y+size/2, size/4, size/4); //center left
       break;
     }
+
+
     popMatrix();
   }
 }
