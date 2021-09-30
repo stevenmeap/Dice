@@ -13,7 +13,6 @@ void draw() {
   int increase =  Math.max(amount, width) / Math.min(amount, width);
   for (int i = 0; i < amount*increase; i+= increase) {
     for (int k = 0; k < amount*increase; k+= increase) {
-      System.out.println("amount: " + amount + "X: " + i + "Y: " + k + "increase: " + increase);
       Die die = new Die(i, k, size);
     }
   }
