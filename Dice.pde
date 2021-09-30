@@ -1,10 +1,12 @@
 public ArrayList<Die> dice;
+public IntList savedRolls;
 public int totalCount = 0;
 
 void setup() {
   size(600, 700);
   noLoop();
   dice = new ArrayList();
+  savedRolls = new IntList();
 }
 int amount;
 void draw() {
@@ -20,11 +22,21 @@ void draw() {
     }
   }
   pushMatrix();
-  text("Dice: " + amount*amount + " Total dots: " + totalCount, 250,650);
+  savedRolls.append(totalCount);
+  
+  text("Dice: " + amount*amount + " Total dots: " + totalCount + " Average dots: " + getAverage(),200, 650);
   popMatrix();
 }
 void mousePressed() {
   redraw();
+}
+
+private int getAverage(){
+  int total = 0;
+  for(int i : savedRolls){
+    total += i;
+  }
+  return total / savedRolls.size();
 }
 
 private int rollAmount() {
