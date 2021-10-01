@@ -1,12 +1,12 @@
 public ArrayList<Die> dice;
-public IntList savedRolls;
+public ArrayList<Integer> savedRolls;
 public int totalCount = 0;
 
 void setup() {
   size(600, 700);
   noLoop();
   dice = new ArrayList();
-  savedRolls = new IntList();
+  savedRolls = new ArrayList();
 }
 int amount;
 void draw() {
@@ -22,7 +22,7 @@ void draw() {
     }
   }
   pushMatrix();
-  savedRolls.append(totalCount);
+  savedRolls.add(totalCount);
   
   text("Dice: " + amount*amount + " Total dots: " + totalCount + " Average dots: " + getAverage(),200, 650);
   popMatrix();
@@ -49,7 +49,7 @@ private int rollAmount() {
 
 public class Die {
   private int x, y;
-  private int sides = 6;
+  private int val = 6;
   private int size;
   public Die(int x, int y, int size) {
     this.x = x;
@@ -61,18 +61,18 @@ public class Die {
 
 
   public void roll() {
-    sides = (int) (Math.random()*6) + 1;
+    val = (int) (Math.random()*6) + 1;
   }
   
   public int getValue(){
-    return sides;
+    return val;
   }
   public void show() {
     pushMatrix();
     fill(255);
     rect(x, y, size, size);
     fill(0);
-    switch(sides) {
+    switch(val) {
     case 1:
       ellipse(x+size / 2, y+size/2, size/4, size/4); //center
       break;
